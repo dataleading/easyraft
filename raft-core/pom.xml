@@ -5,16 +5,16 @@
 
     <parent>
         <groupId>com.dataleading.jraft</groupId>
-        <artifactId>jraft-root</artifactId>
+        <artifactId>raft-root</artifactId>
         <version>1.0</version>
     </parent>
     
 	<groupId>com.dataleading.jraft</groupId>
-	<artifactId>jraft-example</artifactId>
+	<artifactId>raft-core</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
-	<name>jraft-example</name>
 	<url>http://maven.apache.org</url>
+	<name>raft-core</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

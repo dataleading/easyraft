@@ -5,14 +5,14 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.dataleading.jraft</groupId>
-	<artifactId>jraft-root</artifactId>
+	<artifactId>raft-root</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0</version>
-	<name>jraft-root</name>
+	<name>raft-root</name>
 
 	<modules>
-		<module>jraft-core</module>
-		<module>jraft-example</module>
+		<module>raft-core</module>
+		<module>raft-example</module>
 	</modules>
 
 	<dependencies>
