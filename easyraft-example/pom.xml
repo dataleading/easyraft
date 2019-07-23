@@ -10,7 +10,7 @@
     </parent>
     
 	<groupId>com.dataleading.jraft</groupId>
-	<artifactId>raft-example</artifactId>
+	<artifactId>easyraft-example</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 	<name>easyraft-example</name>

@@ -10,7 +10,7 @@
     </parent>
     
 	<groupId>com.dataleading.jraft</groupId>
-	<artifactId>raft-core</artifactId>
+	<artifactId>easyraft-core</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 	<url>http://maven.apache.org</url>
