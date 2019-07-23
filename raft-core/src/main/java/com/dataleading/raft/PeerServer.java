@@ -1,4 +1,4 @@
-package com.dataleading.jraft;
+package com.dataleading.raft;
 
 import java.util.concurrent.atomic.AtomicLong;
 

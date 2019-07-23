@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.dataleading.jraft</groupId>
-        <artifactId>raft-root</artifactId>
+        <groupId>com.dataleading.raft</groupId>
+        <artifactId>easyraft-root</artifactId>
         <version>1.0</version>
     </parent>
     
@@ -13,7 +13,7 @@
 	<artifactId>raft-example</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
-	<name>raft-example</name>
+	<name>easyraft-example</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>

@@ -1,4 +1,4 @@
-package com.dataleading.jraft;
+package com.dataleading.raft;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,14 +19,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.json.JSONObject;
-
-import com.dataleading.jraft.RaftMessage.AppendEntriesRequest;
-import com.dataleading.jraft.RaftMessage.AppendEntriesResponse;
-import com.dataleading.jraft.RaftMessage.InstallSnapshotRequest;
-import com.dataleading.jraft.RaftMessage.InstallSnapshotResponse;
-import com.dataleading.jraft.RaftMessage.Message;
-import com.dataleading.jraft.RaftMessage.VoteRequest;
-import com.dataleading.jraft.RaftMessage.VoteResponse;
+import com.dataleading.raft.RaftMessage.AppendEntriesRequest;
+import com.dataleading.raft.RaftMessage.AppendEntriesResponse;
+import com.dataleading.raft.RaftMessage.InstallSnapshotRequest;
+import com.dataleading.raft.RaftMessage.InstallSnapshotResponse;
+import com.dataleading.raft.RaftMessage.Message;
+import com.dataleading.raft.RaftMessage.VoteRequest;
+import com.dataleading.raft.RaftMessage.VoteResponse;
 
 /**
  * https://raft.github.io/

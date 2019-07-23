@@ -1,4 +1,4 @@
-package com.dataleading.jraft;
+package com.dataleading.raft;
 
 
 public class Snapshot {
