@@ -27,4 +27,6 @@ public interface StateMachine {
 	
 	public long getLastTerm();
 	
+	public String query(String key);
+	
 }

@@ -18,12 +18,7 @@ public class RaftMessage {
 		public void setTerm(long term) {
 			this.term = term;
 		}
-
 		public abstract String toJsonText();
-		
-		public String getPath() {
-			return "/raft";
-		}
 	}
 
 	public static class VoteRequest extends Message{
@@ -65,13 +60,7 @@ public class RaftMessage {
 		}
 		public long getLastLogTerm() {
 			return lastLogTerm;
-		}
-
-		@Override
-		public String getPath() {
-			return "/raft/voterequest";
-		}
-		
+		}		
 	}
 	
 	public static class VoteResponse extends Message{
@@ -116,7 +105,7 @@ public class RaftMessage {
 			JSONArray array = obj.getJSONArray("logEntries");
 			for(int i=0; i<array.length(); i++) {
 				JSONObject o = array.getJSONObject(i);
-				LogEntry le = new LogEntry(o.getLong("term"), o.getJSONObject("record"));
+				LogEntry le = new LogEntry(o.getLong("term"), o.getJSONObject("data"));
 				long idx = o.getLong("index");
 				le.setIndex(idx);
 				logEntries.add(le);
@@ -152,10 +141,6 @@ public class RaftMessage {
 			return obj.toString(0);
 		}
 
-		@Override
-		public String getPath() {
-			return "/raft/appendentries";
-		}
 		public EndPoint getServerId() {
 			return serverId;
 		}

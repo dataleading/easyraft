@@ -139,7 +139,7 @@ public class RaftNode {
 					VoteRequest request = new VoteRequest(currentTerm, serverId, raftLog.getLastLogIndex(),
 							raftLog.getLastLogTerm());
 					
-					String o = postRequest(peer, request);				
+					String o = postRequest(peer, request, "vote");				
 					VoteResponse resp = null;
 					try {
 						resp = new VoteResponse(o);
@@ -292,7 +292,7 @@ public class RaftNode {
 		
 		logger.log(Level.FINE, "appendEntries to {0} with {1}", new Object[] {peer.getEndPoint(), req.toJsonText()});
 		
-		String o = postRequest(peer, req);
+		String o = postRequest(peer, req, "appendEntries");
 
 		AppendEntriesResponse rsp = null;
 		try {
@@ -370,17 +370,17 @@ public class RaftNode {
 				snapshot.getLastTerm(), 0, snapshot.getContents());
 		
 		//post to peer with http, content-type = text/json
-		String s = postRequest(peer, request);
+		String s = postRequest(peer, request, "installSnapshot");
 		InstallSnapshotResponse resp = new InstallSnapshotResponse(s);
 		if(resp.getTerm()  > currentTerm) {
 			becomeFollower(resp.getTerm());
 		}
 	}
 
-	private String postRequest(PeerServer server, Message msg) {
+	private String postRequest(PeerServer server, Message msg, String type) {
 		EndPoint endpoint = server.getEndPoint();
-		String url = "http://" + endpoint.getHostname() + ":" + endpoint.getPort() + msg.getPath();
-		HttpClient client = new HttpClient(url).setTimeOut(50);		
+		String url = "http://" + endpoint.getHostname() + ":" + endpoint.getPort() + "/raft?type="+type;
+		HttpClient client = new HttpClient(url).setTimeOut(500);		
 		String rsp = client.post(msg.toJsonText());
 		return rsp;
 	}
@@ -517,7 +517,7 @@ public class RaftNode {
 			}
 			
 			logger.log(Level.INFO, "redirect to leader {0},and only leader can accept data writing", leaderId);
-			String url = "http://" + leaderId.getHostname() + ":" + leaderId.getPort() + "/raft/writerequest";
+			String url = "http://" + leaderId.getHostname() + ":" + leaderId.getPort() + "/raft?type=write";
 			HttpClient client = new HttpClient(url);
 			String resp = client.post(record);
 			return resp;

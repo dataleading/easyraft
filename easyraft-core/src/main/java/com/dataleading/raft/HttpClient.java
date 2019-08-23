@@ -17,6 +17,7 @@ public class HttpClient {
 
 	private String service;
 	private int TIME_OUT = 60*1000;
+
 	
 	public HttpClient(String service){
 		this.service = service;
@@ -64,7 +65,7 @@ public class HttpClient {
 			}
 
 			InputStream stream = null;
-			if(conn.getResponseCode()== 200){
+			if(conn.getResponseCode() == 200){
 				stream = conn.getInputStream();
 			}else{
 				stream = conn.getErrorStream();
@@ -81,7 +82,7 @@ public class HttpClient {
 			in.close();		
 		} catch (IOException e) {
 			response = "{\"code\":503,\"message\":\"Connection refused\"}";
-			//logger.log(Level.INFO, "failed to call service {0}", service);
+			//logger.log(Level.SEVERE, "failed to call service "+ service, e);
 			//throw e;
 		} finally {
 			if (conn != null) {

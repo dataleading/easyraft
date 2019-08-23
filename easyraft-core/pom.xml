@@ -9,9 +9,8 @@
         <version>1.0</version>
     </parent>
     
-	<groupId>com.dataleading.jraft</groupId>
 	<artifactId>easyraft-core</artifactId>
-	<version>1.0.0</version>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 	<url>http://maven.apache.org</url>
 	<name>easyraft-core</name>
