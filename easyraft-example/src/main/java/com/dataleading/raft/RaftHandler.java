@@ -20,7 +20,7 @@ public class RaftHandler implements HttpHandler {
 
   private static Logger logger = Logger.getLogger(RaftHandler.class.getName());
   private RaftNode raftNode;
-  private final String defaultResp = "{\"error\":\"internal error happens\"}";
+  private final String defaultResp = "{\"error\":\"internal error happens\"}\n";
 
   public RaftHandler(RaftNode raftNode) {
     this.raftNode = raftNode;

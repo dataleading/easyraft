@@ -144,7 +144,7 @@ public class RaftNode {
 					try {
 						resp = new VoteResponse(o);
 					} catch (Exception e) {
-						logger.log(Level.WARNING, "vote error resp from {0},json=''{1}''", new Object[]{peer.getEndPoint(), o});	
+						logger.log(Level.WARNING, "vote error from {0},response=''{1}''", new Object[]{peer.getEndPoint(), o});	
 						return;
 					}
 					
@@ -155,16 +155,16 @@ public class RaftNode {
 					
 					peer.setVoteGranted(resp.getVoteGranted());					
 					if(resp.getTerm() > currentTerm) {
-						logger.log(Level.INFO, "vote denied by {0} with term {1}, my term is {2}, become follower.",
+						logger.log(Level.INFO, "vote denied by {0} with term {1},my term is {2}, become follower.",
 								new Object[] { peer.getEndPoint(), resp.getTerm(), currentTerm });
 						becomeFollower(resp.getTerm());
 					}else {
 						if(resp.getVoteGranted()) {
-							logger.log(Level.INFO, "vote granted by {0} with term {1}, my term is {1}",
+							logger.log(Level.INFO, "vote granted by {0} with term {1},my term is {1}",
 									new Object[] { peer.getEndPoint(), resp.getTerm(), currentTerm });
 							peer.setVoteGranted(true);
 						}else {
-							logger.log(Level.INFO, "vote denied by {0} with term {1}, my term is {2}",
+							logger.log(Level.INFO, "vote denied by {0} with term {1},my term is {2}",
 									new Object[] { peer.getEndPoint(), resp.getTerm(), currentTerm });
 						}
 						int voteGrantedNum = 0;
@@ -298,7 +298,7 @@ public class RaftNode {
 		try {
 			rsp = new AppendEntriesResponse(o);
 		} catch (Exception e) {
-			logger.log(Level.WARNING, "appendEntries response error from {0},json=''{1}''", new Object[]{peer.getEndPoint(), o});
+			logger.log(Level.WARNING, "appendEntries error from {0},response=''{1}''", new Object[]{peer.getEndPoint(), o});
 			return;
 		}
 		
@@ -402,7 +402,7 @@ public class RaftNode {
 			votedFor =  request.getCandidateId();
 		}
 		
-		logger.log(Level.INFO, "vote granted={0}.request=''{1}'',and this lastTerm={2},lastIndex={3}",
+		logger.log(Level.INFO, "vote granted={0} for request=''{1}'',and this lastTerm={2},lastIndex={3}",
 				new Object[] {voteGranted, request.toJsonText(), raftLog.getLastLogTerm(), raftLog.getLastLogIndex() });
 		
 		VoteResponse resp = new VoteResponse(currentTerm, voteGranted);		
